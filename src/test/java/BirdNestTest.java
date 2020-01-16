@@ -7,7 +7,7 @@ public class BirdNestTest {
 
     @Before
     public void before(){
-       ravenNest = new BirdNest("Raven Nest",);
+//       ravenNest = new BirdNest("Raven Nest",);
 
     }
 }
