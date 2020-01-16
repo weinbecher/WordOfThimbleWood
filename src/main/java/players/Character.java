@@ -1,5 +1,6 @@
 package players;
 
+import attributes.Item;
 import attributes.Pet;
 import behaviours.IEquip;
 
@@ -47,6 +48,10 @@ public abstract class Character {
 
     public IEquip getEquipped() {
         return equipped;
+    }
+
+    public void setEquipped(IEquip item){
+        this.equipped = item;
     }
 
     public ArrayList<Pet> getPets(){

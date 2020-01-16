@@ -1,5 +1,7 @@
 package players;
 
+import attributes.Hammer;
+import attributes.Item;
 import behaviours.ICast;
 import behaviours.IEquip;
 import behaviours.IHeal;
@@ -9,28 +11,36 @@ import java.util.ArrayList;
 
 public class HumanPlayer extends Character {
 
-    private ArrayList<IWield> attackItems;
-    private ArrayList<ICast> spells;
-    private ArrayList<IHeal> healingItems;
+    private ArrayList<Item> items;
+
 
 
     public HumanPlayer(String name, int healthPoints, int wallet, ClassType characterClass, AnimalType animal, IEquip equipped) {
         super(name, healthPoints, wallet, characterClass, animal, equipped);
-        this.attackItems = new ArrayList<IWield>();
-        this.healingItems = new ArrayList<IHeal>();
-        this.spells = new ArrayList<ICast>();
+        this.items = new ArrayList<Item>();
     }
 
 
-    public ArrayList<IWield> getAttackItems() {
-        return new ArrayList<IWield>(attackItems);
+    public ArrayList<Item> getItems() {
+        return new ArrayList<Item>(items);
     }
 
-    public ArrayList<ICast> getSpells() {
-        return new ArrayList<ICast>(spells);
+
+    public void addItem(Item item){
+        items.add(item);
     }
 
-    public ArrayList<IHeal> getHealingItems() {
-        return new ArrayList<IHeal>(healingItems);
+    public IEquip selectEquipped(Item item) {
+        if (item instanceof IEquip && items.contains(item)){
+            int index = items.indexOf(item);
+            IEquip equippableItem = (IEquip)items.get(index);
+            return equippableItem;
+        } else {
+            return getEquipped();
+        }
+    }
+
+    public void equip(IEquip item) {
+        setEquipped(item);
     }
 }

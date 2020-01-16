@@ -5,10 +5,10 @@ import behaviours.IEquip;
 import behaviours.IHeal;
 
 public class CrystalBall extends Item implements ICast, IEquip, IHeal {
-    private ItemType itemType;
+
 
     public CrystalBall() {
-        super(itemType = ItemType.CRYSTALBALL);
+        super(ItemType.CRYSTALBALL);
     }
 
     public void healPlayer() {
