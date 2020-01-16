@@ -1,4 +1,8 @@
 package attributes;
 
-public interface SkillType {
+public enum SkillType {
+    FIREBALL,
+    LIGHTNING_STRIKE,
+    BOUNCE,
+    PORTAL
 }

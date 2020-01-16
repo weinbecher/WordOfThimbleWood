@@ -57,4 +57,27 @@ public abstract class Character {
     public ArrayList<Pet> getPets(){
         return new ArrayList<Pet>(pets);
     }
+
+    public void decreaseHealthPoints(int value) {
+        this.healthPoints -= value;
+    }
+
+    public void addPet(Pet pet){
+        this.pets.add(pet);
+    };
+
+    public void dealDamage(int value){
+        int armour = 0;
+        int naturalDefence = this.getAnimalType().getDefendValue();
+        int petDefence = 0;
+        if( this.pets.size() !=0 ){
+            ArrayList<Pet> pets = new ArrayList<Pet>(getPets());
+            for( Pet pet : pets){
+                petDefence += pet.getAnimalType().getDefendValue();
+            }
+        }
+        int finalValue = value - naturalDefence - petDefence - armour;
+        decreaseHealthPoints(finalValue);
+
+    };
 }
